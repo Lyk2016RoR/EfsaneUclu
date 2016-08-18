@@ -8,6 +8,8 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
+
+
 /log/*
 /tmp/*
 !/log/.keep
@@ -15,3 +17,5 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+/db/schema.rb
