@@ -1,0 +1,12 @@
+<h1> Add a new author </h1>
+<%= form_for @author do |f| %>
+
+  <b><%= f.label :name%></b><br>
+  <%= f.text_field :name, placeholder: 'name' %><br>
+
+  <b><%= f.label :info%></b><br>
+  <%= f.text_area :info, placeholder: 'info', rows: 5 %><br>
+
+<%= f.submit %>
+
+<% end %>
