@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
 before_action :load_book, only: [:show,:edit,:update, :destroy]
+before_filter :authenticate_user!
    def new
      load_form_data
     @book = Book.new
