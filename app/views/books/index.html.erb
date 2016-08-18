@@ -1,0 +1,11 @@
+<h1> Book Information </h1>
+
+<% @books.each do |book| %>
+
+<strong>Book Name : </strong> <%= book.name %> <br>
+<strong>Book Topic : </strong> <%= book.topic %> <br>
+<strong>Book Year : </strong> <%= book.year %> <br>
+
+<hr>
+
+<% end %>
