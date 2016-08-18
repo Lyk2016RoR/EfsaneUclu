@@ -1,2 +1,12 @@
 class Book < ApplicationRecord
+
+	validates :name, presence: true
+	validates :topic, presence: true
+	validate :check_date
+
+  def check_date
+    if year.present? && year > Date.today
+        errors.add(:year, "date cannot be future")
+      end
+  end
 end

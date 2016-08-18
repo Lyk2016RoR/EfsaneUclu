@@ -1,0 +1,6 @@
+<strong>Book Name : </strong> <%= @book.name %> <br>
+<strong>Book Topic : </strong> <%= @book.topic %> <br>
+<strong>Book Year : </strong> <%= @book.year %> <br>
+
+<%= link_to 'edit', edit_book_path(@book) %>
+<%= link_to 'delete', book_path(@book), method: :delete, data: { confirm:  'Do you want to delete...' } %>
