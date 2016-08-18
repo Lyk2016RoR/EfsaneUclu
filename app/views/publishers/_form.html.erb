@@ -1,0 +1,15 @@
+<h1> kayıt </h1>
+<%= form_for @publisher do |f| %>
+
+<%= f.label :name%>
+  <%= f.text_field :name, placeholder: 'name' %><br />
+
+  <%= f.label :established_year%>
+  <%= f.text_field :established_year, placeholder: 'established year' %><br />
+
+  <%= f.label :email%>
+  <%= f.text_field :email, placeholder: 'email' %><br />
+
+<%= f.submit %>
+
+<% end %>
