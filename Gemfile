@@ -17,7 +17,6 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 
-gem 'scaffold', '~> 0.0.3'
 gem 'devise', '~> 4.2'
 gem 'cancan', '~> 1.6', '>= 1.6.10'
 gem 'acts_as_votable', '~> 0.10.0'
