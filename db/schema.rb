@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160818140719) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
+
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "book_id"
@@ -42,8 +42,7 @@ ActiveRecord::Schema.define(version: 20160818140719) do
     t.index ["book_id"], name: "index_comments_on_book_id", using: :btree
   end
 
-=======
-<<<<<<< HEAD
+
   create_table "publishers", force: :cascade do |t|
     t.string   "name"
     t.integer  "established_year"
@@ -53,9 +52,6 @@ ActiveRecord::Schema.define(version: 20160818140719) do
     t.datetime "updated_at",       null: false
   end
 
-=======
->>>>>>> master
->>>>>>> bd3dea48626cf51259508d1e00117d79f07a9d4b
   add_foreign_key "books", "categories"
   add_foreign_key "comments", "books"
 end
