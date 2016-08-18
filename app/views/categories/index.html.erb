@@ -1,0 +1,4 @@
+<h3> Listing Categories </h3>
+<% @categories.each do |c| %>
+  <p><%= link_to c.name, category_path(c) %><br></p>
+<% end %>
