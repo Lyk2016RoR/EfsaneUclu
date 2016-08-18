@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 before_action :load_book, only: [:show,:edit,:update, :destroy]
    def new
+     load_form_data
     @book = Book.new
    end
 
@@ -13,7 +14,7 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
   end
 
   def edit
-
+    load_form_data
   end
 
   def update
@@ -21,6 +22,7 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
       flash[:success] = 'Book infos updated successfuly'
       redirect_to book_path(@book)
     else
+      load_form_data
       render :edit
    end
   end
@@ -36,7 +38,7 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
     if @book.save
       redirect_to books_path, notice: 'Book has been saved'
     else
-
+      load_form_data
       render :new
     end
   end
@@ -50,6 +52,10 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
 
   def book_params
     params.require(:book).permit(:name, :topic, :year)
+  end
+
+  def load_form_data
+    @categories = Category.all.collect {|c| [c.name, c.id ] }
   end
 
 end

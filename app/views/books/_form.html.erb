@@ -2,13 +2,16 @@
 <%= form_for @book do |f| %>
 
 <%= f.label :name%>
-  <%= f.text_field :name, placeholder: 'name' %><br />
+  <%= f.text_field :name, placeholder: 'name' %><br>
 
   <%= f.label :topic%>
-  <%= f.text_field :topic, placeholder: 'topic'%><br />
+  <%= f.text_field :topic, placeholder: 'topic'%><br>
 
   <%= f.label :year%>
-  <%= f.date_select :year, placeholder: 'year'%><br />
+  <%= f.date_select :year, placeholder: 'year'%><br>
+
+  <%= f.label :category%>
+  <%= f.select :category_id, @categories %><br>
 
 <%= f.submit %>
 
