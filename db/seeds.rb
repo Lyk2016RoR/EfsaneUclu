@@ -8,9 +8,9 @@
 
 puts 'Creating seed data...'
 
-p1 = Book.create(name: 'Suç ve Ceza', topic: 'Polisiye', year: Date.yesterday)
-p2 = Book.create(name: 'Savaş ve Barış', topic: 'Polisiye', year: Date.yesterday)
-p3 = Book.create(name: '9. Hariciye Koğuşu', topic: 'Polisiye', year: Date.yesterday)
+p1 = Book.create(name: 'Suç ve Ceza', topic: 'Polisiye', year: Date.yesterday, summary: 'This is a summary about Suç ve Ceza')
+p2 = Book.create(name: 'Savaş ve Barış', topic: 'Polisiye', year: Date.yesterday, summary: 'Summary of Savaş ve Barış')
+p3 = Book.create(name: '9. Hariciye Koğuşu', topic: 'Polisiye', year: Date.yesterday, summary: 'This is a summary about 9. Hariciye Koğuşu')
 
 
 puts 'Creaed seed data ...'
