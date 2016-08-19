@@ -1,7 +1,15 @@
 class BooksController < ApplicationController
+
     before_action :authenticate_user!, except: [:show, :index]
     before_action :load_book, only: [:show, :update, :edit, :destroy]
     before_action :authorize_user!, only: [:edit, :update, :destroy]
+
+before_action :load_book, only: [:show,:edit,:update, :destroy]
+
+
+
+
+
    def new
      load_form_data
     @book = Book.new
@@ -61,11 +69,12 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:name, :topic, :year)
+    params.require(:book).permit(:name, :topic, :year, :category_id)
   end
 
   def load_form_data
     @categories = Category.all.collect {|c| [c.name, c.id ] }
+    @authors = Author.all
   end
 
   def authorize_user!
