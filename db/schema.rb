@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20160819080339) do
   end
 
   add_foreign_key "books", "categories"
-  add_foreign_key "comments", "books"
+
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "users"
 
