@@ -21,25 +21,25 @@ class VotesController < ApplicationController
 
 
   def update
-  if @vote.update(rating: params[:vote][:rating])
-    redirect_to @book, notice: "Vote was saved."
-  else
-    redirect_to @book, notice: "Vote is not valid."
-  end
+    if @vote.update(rating: params[:vote][:rating])
+      redirect_to @book, notice: "Vote was saved."
+    else
+      redirect_to @book, notice: "Vote is not valid."
+    end
   end
 
   private
 
   def authorize_user!
-  redirect_to @book, notice: "Not authorized" unless @vote.user_id == current_user.id
+    redirect_to @book, notice: "Not authorized" unless @vote.user_id == current_user.id
   end
 
   def set_vote
-  @vote = Vote.find(params[:id])
+    @vote = Vote.find(params[:id])
   end
 
   def set_book
-  @book = Book.find(params[:book_id])
+    @book = Book.find(params[:book_id])
   end
 
 end
