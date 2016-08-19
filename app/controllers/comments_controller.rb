@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def create
     parent
     @comment = @parent.comments.new(comment_params)
+    @comment.user_id = current_user.id
 
     if @comment.save
       redirect_to @parent, notice: "Comment was saved"

@@ -2,22 +2,28 @@
 
 <b> Name : </b> <%= @author.name %><br>
 <b> Info : </b> <%= @author.info %><br>
-<%= link_to 'Edit Author info', edit_author_path(@author) %>
-<%= link_to 'Delete Author', author_path(@author), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+<% if current_admin.present? %>
+  <%= link_to 'Edit Author info', edit_author_path(@author) %>
+  <%= link_to 'Delete Author', author_path(@author), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+<% end %>
 
 <hr>
 <h3> Listing Comments </h3>
 <% @author.comments.each do |comment| %>
   <%= comment.body %>
-  <%= link_to 'Delete Comment', author_comment_path(@author, comment), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+  <% if comment.user_id == current_user.id %>
+    <%= link_to 'Delete Comment', author_comment_path(@author, comment), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+  <% end %><br>
 <% end %>
 
-<h3> Add your comments </h3>
-<%= form_for ([@author, @author.comments.build]) do |f| %>
-  <%= f.label :body %><br>
-  <%= f.text_area :body, placeholder: 'Write your comment here', rows: 5%><br>
+<% if current_user.present? %>
+  <h3> Add your comments </h3>
+  <%= form_for ([@author, @author.comments.build]) do |f| %>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, placeholder: 'Write your comment here', rows: 5%><br>
 
-  <%= f.submit 'SUBMIT' %>
+    <%= f.submit 'SUBMIT' %>
+  <% end %>
 <% end %>
 <hr>
 <h3> Books which has written by <%= @author.name %> </h3>
