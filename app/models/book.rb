@@ -6,7 +6,6 @@ class Book < ApplicationRecord
 	belongs_to :publisher
 	belongs_to :category
 
-	has_many :comments, dependent: :destroy
 	has_and_belongs_to_many :authors
 
   def check_date

@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 before_action :load_book, only: [:show,:edit,:update, :destroy]
 
 
-  
+
 
    def new
      load_form_data
@@ -55,7 +55,7 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
   end
 
   def book_params
-    params.require(:book).permit(:name, :topic, :year, :category_id)
+    params.require(:book).permit(:name, :topic, :year, :category_id, author_ids: [])
   end
 
   def load_form_data
