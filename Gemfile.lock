@@ -179,11 +179,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-  acts_as_votable (~> 0.10.0)
   bootstrap-sass
-=======
->>>>>>> master
   byebug
   coffee-rails (~> 4.2)
   devise (~> 4.2)

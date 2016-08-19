@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
     before_action :load_book, only: [:show,:edit,:update, :destroy]
-    before_action :authenticate_user!, except: [:show, :index]
+    #before_action :authenticate_user!, except: [:show, :index]
 
-    before_action :authorize_admin!, only: [:edit, :update, :destroy]
+    #before_action :authorize_admin!, only: [:edit, :update, :destroy]
 
 
 
