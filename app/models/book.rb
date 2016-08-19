@@ -7,14 +7,16 @@ class Book < ApplicationRecord
 	belongs_to :category
 
 
+
 	has_many :votes
 
 	def average_rating
 		votes.average(:rating).to_s
 	end
 
-	has_many :comments, dependent: :destroy
+
 	has_and_belongs_to_many :authors
+	has_many :comments, as: :commentable
 
 
   def check_date

@@ -7,6 +7,9 @@
   <b><%= f.label :info%></b><br>
   <%= f.text_area :info, placeholder: 'info', rows: 5 %><br>
 
+  <%= f.label :publisher%>
+  <%= f.select :publisher_id, @publishers %><br>
+
 <%= f.submit %>
 
 <% end %>
