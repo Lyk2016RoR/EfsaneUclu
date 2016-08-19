@@ -1,4 +1,5 @@
 class PublishersController < ApplicationController
+  before_action :authorize_admin!, only: [:edit, :update, :destroy]
 
   def new
    @publisher = Publisher.new
@@ -48,6 +49,10 @@ class PublishersController < ApplicationController
 
   def publisher_params
     params.require(:publisher).permit(:name, :established_year, :email)
+  end
+
+  def authorize_admin!
+    redirect_to root_path, notice: "Not authorized"
   end
 
 end

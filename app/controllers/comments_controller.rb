@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_user!, only: [:destroy]
 
   def create
     parent
@@ -27,5 +29,9 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:body)
+    end
+
+    def authorize_user!
+      redirect_to root_path, notice: "Not authorized" unless @parent.user_id == current_user.id
     end
 end
