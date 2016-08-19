@@ -49,9 +49,11 @@
     <%= yield %>
     <br><%= link_to 'List Books', books_path %>
     <%= link_to 'List Categories', categories_path %>
+    <%= link_to 'List Authors', authors_path %><br>
     <% if current_admin.present? %>
-    <%= link_to 'Add new Book', new_book_path %>
-        <% end %>
+      <%= link_to 'Add new Book', new_book_path %>
+      <%= link_to 'Add new Author', new_author_path %>
+    <% end %>
 
   </body>
 </html>
