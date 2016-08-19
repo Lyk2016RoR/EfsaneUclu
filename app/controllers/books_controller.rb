@@ -1,8 +1,14 @@
 class BooksController < ApplicationController
-before_action :load_book, only: [:show,:edit,:update, :destroy]
+    before_action :load_book, only: [:show,:edit,:update, :destroy]
+    before_action :authenticate_user!, except: [:show, :index]
+
+    before_action :authorize_admin!, only: [:edit, :update, :destroy]
 
 
-  
+
+
+
+
 
    def new
      load_form_data
@@ -14,8 +20,16 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
   end
 
   def show
-
+    if current_user
+      if @book.votes.where(user_id: current_user.id).any?
+        @vote = @book.votes.where(user_id: current_user.id).first
+      else
+        @vote = @book.votes.build
+      end
+    end
   end
+
+
 
   def edit
     load_form_data
@@ -55,12 +69,16 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
   end
 
   def book_params
-    params.require(:book).permit(:name, :topic, :year, :category_id)
+    params.require(:book).permit(:name, :topic, :year, :category_id, author_ids: [])
   end
 
   def load_form_data
     @categories = Category.all.collect {|c| [c.name, c.id ] }
     @authors = Author.all
+  end
+
+  def authorize_admin!
+    redirect_to root_path, notice: "Not authorized"
   end
 
 end
