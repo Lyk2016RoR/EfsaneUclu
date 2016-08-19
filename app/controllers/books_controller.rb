@@ -57,6 +57,7 @@ before_filter :authenticate_user!
 
   def load_form_data
     @categories = Category.all.collect {|c| [c.name, c.id ] }
+    @authors = Author.all
   end
 
 end
