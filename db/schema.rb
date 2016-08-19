@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819150012) do
+ActiveRecord::Schema.define(version: 20160819151756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 20160819150012) do
   create_table "authors", force: :cascade do |t|
     t.string   "name"
     t.text     "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "publisher_id"
+    t.index ["publisher_id"], name: "index_authors_on_publisher_id", using: :btree
   end
 
   create_table "authors_books", id: false, force: :cascade do |t|
@@ -81,8 +83,6 @@ ActiveRecord::Schema.define(version: 20160819150012) do
     t.string   "telephone"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "author_id"
-    t.index ["author_id"], name: "index_publishers_on_author_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,9 +114,9 @@ ActiveRecord::Schema.define(version: 20160819150012) do
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
+  add_foreign_key "authors", "publishers"
   add_foreign_key "books", "categories"
   add_foreign_key "comments", "users"
-  add_foreign_key "publishers", "authors"
   add_foreign_key "votes", "books"
   add_foreign_key "votes", "users"
 end

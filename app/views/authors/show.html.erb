@@ -2,6 +2,8 @@
 
 <b> Name : </b> <%= @author.name %><br>
 <b> Info : </b> <%= @author.info %><br>
+<b> Publisher : </b> <%= @author.publisher.name %><br>
+
 <% if current_admin.present? %>
   <%= link_to 'Edit Author info', edit_author_path(@author) %>
   <%= link_to 'Delete Author', author_path(@author), method: :delete, data: { confirm:  'Do you want to delete...' } %>
