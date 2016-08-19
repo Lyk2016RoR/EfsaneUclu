@@ -55,11 +55,12 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
   end
 
   def book_params
-    params.require(:book).permit(:name, :topic, :year)
+    params.require(:book).permit(:name, :topic, :year, :category_id)
   end
 
   def load_form_data
     @categories = Category.all.collect {|c| [c.name, c.id ] }
+    @authors = Author.all
   end
 
 end
