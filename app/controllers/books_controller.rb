@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
-before_action :load_book, only: [:show,:edit,:update, :destroy]
+    before_action :authenticate_user!, except: [:show, :index]
+    before_action :load_book, only: [:show, :update, :edit, :destroy]
+    before_action :authorize_user!, only: [:edit, :update, :destroy]
    def new
      load_form_data
     @book = Book.new
@@ -10,8 +12,16 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
   end
 
   def show
-
+    if current_user
+      if @book.votes.where(user_id: current_user.id).any?
+        @vote = @book.votes.where(user_id: current_user.id).first
+      else
+        @vote = @book.votes.build
+      end
+    end
   end
+
+
 
   def edit
     load_form_data
@@ -56,6 +66,10 @@ before_action :load_book, only: [:show,:edit,:update, :destroy]
 
   def load_form_data
     @categories = Category.all.collect {|c| [c.name, c.id ] }
+  end
+
+  def authorize_user!
+    redirect_to root_path, notice: "Not authorized" unless @book.user_id == current_user.id
   end
 
 end

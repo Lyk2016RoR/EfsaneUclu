@@ -2,5 +2,8 @@
 <strong>Book Topic : </strong> <%= @book.topic %> <br>
 <strong>Book Year : </strong> <%= @book.year %> <br>
 
+<%= render 'votes/form' %>
+
+
 <%= link_to 'edit', edit_book_path(@book) %>
 <%= link_to 'delete', book_path(@book), method: :delete, data: { confirm:  'Do you want to delete...' } %>
