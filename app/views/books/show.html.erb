@@ -24,12 +24,22 @@ font-family: 'Cinzel', serif;
       	margin-right: 80px;
       	float: right;
       }
+      .comment{
+
+      	float: right;
+      }
+      .vote {
+
+      		margin-left:690px;
+      		margin-top:120px;
+      }
 </style>
 
 <div class="font"><%= @book.name %></div>
 
 <div class="right">
 	<div class="font_info">
+		<div class="comment">
 		<table>
 			<tr >
 				<td width="170">
@@ -44,15 +54,6 @@ font-family: 'Cinzel', serif;
 </td>
 <td> <%= @book.topic %><br><br>
 <%= @book.year %><br><br>
-
-
-<b>Average Rating: </b><%= @book.average_rating %><br />
-
-<%= render 'votes/form' %>
-
-
-
-
 <% @book.authors.each do |author| %>
   <%= link_to author.name, author_path(author) %><b> </b>
 <% end %>
@@ -63,6 +64,7 @@ font-family: 'Cinzel', serif;
 </table>
 </div>
 </div>
+</div>
 <% if current_admin.present? %>
 <div class="link">
 <%= link_to 'edit', edit_book_path(@book) %>
@@ -71,6 +73,11 @@ font-family: 'Cinzel', serif;
 <% end %>
 
 <br>
+<div class="vote">
+<b>Average Rating: </b><%= @book.average_rating %><br />
+
+<%= render 'votes/form' %>
+</div>
 
 
 <h3> Listing Comments </h3>
@@ -89,4 +96,6 @@ font-family: 'Cinzel', serif;
       <%= f.submit 'SUBMIT' %>
   <% end %>
 <% end %>
+
+
 

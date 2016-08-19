@@ -1,6 +1,8 @@
 <% @publishers.each do |publisher| %>
-
-<strong>Publisher  Name : </strong> <%= link_to publisher.name, publisher_path(publisher) %> <br>
-<hr>
+<center>
+<p style="border-style:solid;border-radius:25px;border-color:grey;font-size:20px;width:200px;">
+<%= link_to publisher.name, publisher_path(publisher) %> <br>
+</p>
+</center>
 
 <% end %>

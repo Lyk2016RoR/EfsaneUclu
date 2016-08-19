@@ -1,6 +1,17 @@
+<style type="text/css">
+
+.hiza {
+
+	margin-left: 30px;
+}
+
+
+</style>
+<div class="hiza">
 <strong>Publisher Name : </strong> <%= @publisher.name %> <br>
 <strong>Publisher Established Year : </strong> <%= @publisher.established_year %> <br>
 <strong>Publisher Email : </strong> <%= @publisher.email %> <br>
 
 <%= link_to 'edit', edit_publisher_path(@publisher) %>
 <%= link_to 'delete', publisher_path(@publisher), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+</div>
