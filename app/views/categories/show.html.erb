@@ -1,9 +1,22 @@
-<h3> Listing Books on This Categories </h3>
+<style type="text/css">
+
+.hiza {
+
+	margin-left: 30px;
+}
+
+
+</style>
+
+<div class="hiza">
+<h1>Books on This Categories </h1><hr>
 
 <% @category.books.each do |book| %>
-  <strong>Book Name : </strong> <%=link_to book.name, book_path(book) %> <br>
-  <strong>Book Topic : </strong> <%= book.topic %> <br>
-  <strong>Book Year : </strong> <%= book.year %> <br>
-  <hr>
+buraya resim <br>
+   <%=link_to book.name, book_path(book) %> <br>
+  <%= book.topic %> <br>
+  <%= book.year %> <br><br>
+  
 
 <% end %>
+</div>

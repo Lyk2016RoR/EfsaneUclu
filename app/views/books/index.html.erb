@@ -1,11 +1,29 @@
+<style type="text/css">
+
+.hiza {
+
+	text-align: center;
+}
+
+
+</style>
+
+<div class="hiza">
 <h1> Book Information </h1>
 
-<% @books.each do |book| %>
-
-<strong>Book Name : </strong> <%=link_to book.name, book_path(book) %> <br>
-<strong>Book Topic : </strong> <%= book.topic %> <br>
-<strong>Book Year : </strong> <%= book.year %> <br>
-
 <hr>
+<center>
+<% @books.each do |book| %>
+<p style="border-style:solid;border-radius:25px;border-color:grey;font-size:20px;width:200px;">
+buraya resim <br>
+		
+	
+<strong> <%=link_to book.name, book_path(book) %></strong> <br>
+	
+<strong> <%= book.year %></strong> <br>
 
 <% end %>
+
+</p>
+</center>
+</div>

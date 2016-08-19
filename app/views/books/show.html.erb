@@ -1,12 +1,58 @@
-<h3> Details about <%= @book.name %> </h3>
+<style>
+@import 'https://fonts.googleapis.com/css?family=Architects+Daughter';
+@import 'https://fonts.googleapis.com/css?family=Cinzel';
 
-<strong>Book Name : </strong> <%= @book.name %> <br>
-<strong>Book Topic : </strong> <%= @book.topic %> <br>
-<strong>Book Year : </strong> <%= @book.year %> <br>
-<b> Author(s) Name : </b>
+.font_info{
+font-family: 'Cinzel', serif;
+
+}
+.font {
+   font-family: 'Architects Daughter', cursive; 
+   font-size: 50px;
+   margin-left: 80px;
+}
+
+.right {
+ position: absolute;
+
+      right: 250px;
+      background-color: #F9FEA7;
+      width: 400px;}
+
+      .link {
+      	margin-right: 80px;
+      	float: right;
+      }
+</style>
+
+<div class="font"><%= @book.name %></div>
+
+<div class="right">
+	<div class="font_info">
+		<table>
+			<tr >
+				<td width="170">
+<strong> Book Topic </strong> <br><br>
+<strong> Book Year </strong> <br><br>
+<b> Author(s) Name </b>
+</td>
+<td width="30">
+	:<br><br>
+	:<br><br>
+	:
+</td>
+<td> <%= @book.topic %><br><br>
+<%= @book.year %><br><br>
 <% @book.authors.each do |author| %>
-  <%= link_to author.name, author_path(author) %><b> - </b>
+  <%= link_to author.name, author_path(author) %><b> </b>
 <% end %>
-<br>
+</td>
+
+</tr>
+</table>
+</div>
+</div>
+<div class="link">
 <%= link_to 'edit', edit_book_path(@book) %>
 <%= link_to 'delete', book_path(@book), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+</div>

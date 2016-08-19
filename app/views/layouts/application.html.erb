@@ -7,12 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <style type="text/css">
+.list_add {
 
-    <!-- Bootstrap Core CSS -->
-    <link href="https://blackrockdigital.github.io/startbootstrap-shop-item/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="https://blackrockdigital.github.io/startbootstrap-shop-item/css/shop-item.css" rel="stylesheet">
+	margin-left: 30px;
+}
+    </style>
 
   </head>
 
@@ -28,67 +28,95 @@
         </div>
       <% end %>
     </div>
+    <br><br>
 
+<div class="butons">
 
-<hr>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Anasayfa</a>
+    </div>
 
-<div class="center">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-    <% if current_user.present? %>
-      <%= current_user.email %>
-          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%=books_path %>">Books <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="<%=categories_path %>">Categories <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="<%=authors_path %>">Authors <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="<%=publishers_path %>">Publishers <span class="sr-only">(current)</span></a></li>
+       
+</ul>
 
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header" >
-            	
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
-            </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                	
-                 
-      <span class="pull-right"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>  </span>
+    <% if current_admin.present? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="<%=new_book_path %>">New Book</a></li>
+        <li><a href="<%=new_author_path %>">New Author</a></li>
+    </ul>
+      <% end %>
+      
+      <% unless current_user.present? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+    <% if current_admin.present? %>
+      <%= current_admin.email %><br>
+      <%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %>
+      <br>
+      <%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
+    <% else %>
+
+            <li><a href="<%=new_admin_session_path %>">Login</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="<%=new_admin_registration_path %>">Sign Up</a></li>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+     
+       <% unless current_admin.present? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+<% if current_user.present? %>
+      <%= current_user.email %><br>
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+      <br>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     <% else %>
-      <span class="pull-right"><%= link_to 'Login as a user', new_user_session_path %></span>
-      <span class="pull-right"><%= link_to 'Sign Up as a user', new_user_registration_path %> </span>
-    <% end %>
-    <% if current_admin.present? %>
-      <%= current_admin.email %>
-     <span class="pull-right"> <%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %> | </span>
-        <span class="pull-right"><%= link_to 'Logout', destroy_admin_session_path, method: :delete %>  </span>
-    <% else %>
-      <%= link_to 'Login as admin', new_admin_session_path %>
-     <span class="pull-right"> <%= link_to 'Sign Up as an admin', new_admin_registration_path %>
-    <% end %>
-
+            <li><a href="<%=new_user_session_path %>">Login</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="<%=new_user_registration_path %>">Sign Up</a></li>   
+          </ul>
+          </li>
+           <% end %>
       </ul>
-            </div>
+      <% end %>
 
-          </div>
-        <!-- /.container -->
-    </nav>
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-  </div>
-
-<hr>
+</div>
 
 
     <%= yield %>
-    <br><%= link_to 'List Books', books_path %>
-    <%= link_to 'List Categories', categories_path %>
-    <%= link_to 'List Authors', authors_path %><br>
-    <% if current_admin.present? %>
-      <%= link_to 'Add new Book', new_book_path %>
-      <%= link_to 'Add new Author', new_author_path %>
-    <% end %>
+
 
 
 

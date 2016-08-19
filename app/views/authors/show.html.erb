@@ -1,16 +1,28 @@
-<h3> Details about author </h3>
+<style type="text/css">
 
-<b> Name : </b> <%= @author.name %><br>
-<b> Info : </b> <%= @author.info %><br>
+.hiza {
+
+	margin-left: 30px;
+}
+
+
+</style>
+
+<div class="hiza">
+<h1> Details about author </h1>
+
+<b> </b> <%= @author.name %><br>
+<b> </b> <%= @author.info %><br>
 <%= link_to 'Edit Author info', edit_author_path(@author) %>
 <%= link_to 'Delete Author', author_path(@author), method: :delete, data: { confirm:  'Do you want to delete...' } %>
 
 <hr>
-<h3> Books which has written by <%= @author.name %> </h3>
+<h1> Books which has written by <%= @author.name %> </h1>
 
 <% @author.books.each do |book| %>
-  <strong>Book Name : </strong> <%=link_to book.name, book_path(book) %> <br>
-  <strong>Book Topic : </strong> <%= book.topic %> <br>
-  <strong>Book Year : </strong> <%= book.year %> <br>
-  <hr>
+buraya resim <br>
+  <%=link_to book.name, book_path(book) %> <br>
+  <%= book.topic %> <br>
+  <%= book.year %> <br><br>
 <% end %>
+</div>

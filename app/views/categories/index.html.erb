@@ -1,4 +1,21 @@
-<h3> Listing Categories </h3>
+<style type="text/css">
+
+.hiza {
+
+	text-align: center;
+}
+
+
+</style>
+
+
+<div class="hiza">
+<h1>Categories </h1><hr>
 <% @categories.each do |c| %>
-  <p><%= link_to c.name, category_path(c) %><br></p>
+<center>
+<p style="border-style:solid;border-radius:25px;border-color:grey;font-size:20px;width:200px;">
+ <%= link_to c.name, category_path(c) %>
+</p>
+</center>
 <% end %>
+</div>

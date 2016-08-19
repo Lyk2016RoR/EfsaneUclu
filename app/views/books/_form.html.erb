@@ -1,16 +1,16 @@
-<h1> kayıt </h1>
+<h1> New Book </h1><hr>
 <%= form_for @book do |f| %>
 
-<%= f.label :name%>
+<%= f.label :name%> :
   <%= f.text_field :name, placeholder: 'name' %><br>
 
-  <%= f.label :topic%>
+  <%= f.label :topic%> :
   <%= f.text_field :topic, placeholder: 'topic'%><br>
 
-  <%= f.label :year%>
+  <%= f.label :year%> :
   <%= f.date_select :year, placeholder: 'year'%><br>
 
-  <%= f.label :category%>
+  <%= f.label :category%> :
   <%= f.select :category_id, @categories %><br>
 
   <%= f.label :Authors %><br>
