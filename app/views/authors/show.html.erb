@@ -6,6 +6,20 @@
 <%= link_to 'Delete Author', author_path(@author), method: :delete, data: { confirm:  'Do you want to delete...' } %>
 
 <hr>
+<h3> Listing Comments </h3>
+<% @author.comments.each do |comment| %>
+  <%= comment.body %>
+  <%= link_to 'Delete Comment', author_comment_path(@author, comment), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+<% end %>
+
+<h3> Add your comments </h3>
+<%= form_for ([@author, @author.comments.build]) do |f| %>
+  <%= f.label :body %><br>
+  <%= f.text_area :body, placeholder: 'Write your comment here', rows: 5%><br>
+
+  <%= f.submit 'SUBMIT' %>
+<% end %>
+<hr>
 <h3> Books which has written by <%= @author.name %> </h3>
 
 <% @author.books.each do |book| %>

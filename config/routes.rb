@@ -6,9 +6,11 @@ Rails.application.routes.draw do
 
   root 'books#index'
   resources :publishers
-  resources :books
+  resources :books, :authors do
+    resources :comments, only: [:create, :destroy]
+  end
   resources :categories, only: [:index, :show]
-  resources :authors
+
 
   resources :books do
     resources :votes, only: [:create, :update]

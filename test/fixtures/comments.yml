@@ -2,8 +2,10 @@
 
 one:
   body: MyText
-  book: one
+  commentable: one
+  commentable_type: Commentable
 
 two:
   body: MyText
-  book: two
+  commentable: two
+  commentable_type: Commentable
