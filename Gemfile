@@ -19,8 +19,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'bootstrap-sass'
 
 gem 'devise', '~> 4.2'
-gem 'cancan', '~> 1.6', '>= 1.6.10'
-gem 'acts_as_votable', '~> 0.10.0'
+gem "paperclip", "~> 4.2"
 
 
 # Use jquery as the JavaScript library

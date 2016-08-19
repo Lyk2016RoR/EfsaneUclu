@@ -1,7 +1,16 @@
 <h1> New Book </h1><hr>
 <%= form_for @book do |f| %>
 
-<%= f.label :name%> :
+
+<div class="form-group">
+      <%= f.label :photo, class: 'col-sm-2 control-label'  %>
+      <div class="col-sm-6">
+          <%= f.file_field :photo %>
+      </div>
+  </div>
+
+<%= f.label :name%>
+
   <%= f.text_field :name, placeholder: 'name' %><br>
 
   <%= f.label :topic%> :
