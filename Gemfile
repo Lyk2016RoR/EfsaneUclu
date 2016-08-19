@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'bootstrap-sass'
 
 gem 'devise', '~> 4.2'
 gem 'cancan', '~> 1.6', '>= 1.6.10'

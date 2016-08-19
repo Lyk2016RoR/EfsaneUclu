@@ -40,7 +40,12 @@ GEM
       tzinfo (~> 1.1)
     acts_as_votable (0.10.0)
     arel (7.1.1)
+    autoprefixer-rails (6.4.0.2)
+      execjs
     bcrypt (3.1.11)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
     cancan (1.6.10)
@@ -166,6 +171,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
+  bootstrap-sass
   byebug
   cancan (~> 1.6, >= 1.6.10)
   coffee-rails (~> 4.2)
