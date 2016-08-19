@@ -1,5 +1,7 @@
 <h3> Details about <%= @book.name %> </h3>
 
+  <li class="round-image-50"><%= image_tag(@book.photo.url(:thumb)) %></li>
+
 <strong>Book Name : </strong> <%= @book.name %> <br>
 <strong>Book Topic : </strong> <%= @book.topic %> <br>
 <strong>Book Year : </strong> <%= @book.year %> <br>
