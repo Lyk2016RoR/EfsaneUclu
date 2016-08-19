@@ -7,7 +7,9 @@ class AuthorsController < ApplicationController
   end
 
   def new
+    load_form_data
     @author = Author.new
+
   end
 
   def show
@@ -19,12 +21,13 @@ class AuthorsController < ApplicationController
     if @author.save
       redirect_to authors_path, notice: 'author has been saved'
     else
+      load_form_data
       render :new
     end
   end
 
   def edit
-
+    load_form_data
   end
 
   def update
@@ -32,6 +35,7 @@ class AuthorsController < ApplicationController
       flash[:success] = 'Author infos updated successfuly'
       redirect_to authors_path(@author)
     else
+      load_form_data
       render 'edit'
     end
   end
@@ -54,6 +58,10 @@ class AuthorsController < ApplicationController
 
     def authorize_admin!
       redirect_to root_path, notice: "Not authorized"
+    end
+
+    def load_form_data
+      @publishers = Publisher.all.collect {|p| [p.name, p.id ] }
     end
 
 end
