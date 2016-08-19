@@ -18,28 +18,30 @@ class AuthorsController < ApplicationController
     if @author.save
       redirect_to authors_path, notice: 'author has been saved'
     else
-      load_author
       render :new
     end
   end
 
   def edit
-    load_author
+
   end
 
   def update
-
+    if @author.update(author_params)
+      flash[:success] = 'Author infos updated successfuly'
+      redirect_to authors_path(@author)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-
+    @author.destroy
+    flash[:warning] = 'Author infos deleted successfuly'
+		redirect_to authors_path
   end
 
   private
-
-    def load_author
-      @author = Author.find(params[:id])
-    end
 
     def author_params
       params.require(:author).permit(:name, :info)

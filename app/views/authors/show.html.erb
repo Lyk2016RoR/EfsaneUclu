@@ -1,5 +1,8 @@
 <h3> Details about author </h3>
 
 <b> Name : </b> <%= @author.name %><br>
-<b> Info : </b> <%= @author.info %>
+<b> Info : </b> <%= @author.info %><br>
+<%= link_to 'Edit Author info', edit_author_path(@author) %>
+<%= link_to 'Delete Author', author_path(@author), method: :delete, data: { confirm:  'Do you want to delete...' } %>
+
 <hr>
